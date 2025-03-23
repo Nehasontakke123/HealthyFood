@@ -31,3 +31,12 @@ export const login = async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 };
+
+export const getUsers = async (req, res) => {
+  try {
+    const users = await User.find(); // पूर्ण डेटा मिळेल (password सह)
+    res.status(200).json(users);
+  } catch (error) {
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
